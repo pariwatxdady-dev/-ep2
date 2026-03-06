@@ -1,0 +1,71 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111827;
+color:white;
+padding:40px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:10px 20px;
+background:#0ea5e9;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>⚙️ Admin Panel</h1>
+
+<input id="title" placeholder="หัวข้อบทความ">
+
+<input id="image" placeholder="URL รูปภาพ">
+
+<textarea id="text" placeholder="เนื้อหา"></textarea>
+
+<button onclick="addPost()">เพิ่มบทความ</button>
+
+<script>
+
+function addPost(){
+
+let title=document.getElementById("title").value;
+let image=document.getElementById("image").value;
+let text=document.getElementById("text").value;
+
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+posts.push({title,image,text});
+
+localStorage.setItem("posts",JSON.stringify(posts));
+
+alert("เพิ่มบทความแล้ว");
+
+}
+
+</script>
+
+</body>
+</html>
+```
