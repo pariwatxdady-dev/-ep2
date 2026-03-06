@@ -4,12 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Knowledge Hub</title>
+<title>Tech Knowledge</title>
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
 background:#0f172a;
 color:white;
@@ -17,53 +17,14 @@ color:white;
 
 header{
 text-align:center;
-padding:40px;
+padding:30px;
 background:#020617;
 }
 
-nav{
-text-align:center;
-background:#1e293b;
-padding:12px;
-}
-
-nav a{
-color:white;
-margin:0 15px;
-text-decoration:none;
-font-weight:bold;
-}
-
-nav a:hover{
-color:#38bdf8;
-}
-
-.hero{
-text-align:center;
-padding:70px 20px;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-.search-box{
-text-align:center;
-padding:20px;
-}
-
-.search-box input{
-padding:12px;
-width:60%;
-max-width:400px;
-border-radius:8px;
-border:none;
-}
-
 .container{
-padding:40px;
 max-width:1100px;
 margin:auto;
+padding:40px;
 }
 
 .grid{
@@ -76,12 +37,6 @@ gap:20px;
 background:#1e293b;
 border-radius:10px;
 overflow:hidden;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-background:#334155;
 }
 
 .card img{
@@ -91,28 +46,13 @@ object-fit:cover;
 }
 
 .card-content{
-padding:20px;
-}
-
-.btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 14px;
-background:#0ea5e9;
-color:white;
-text-decoration:none;
-border-radius:5px;
-}
-
-.btn:hover{
-background:#0284c7;
+padding:15px;
 }
 
 footer{
 text-align:center;
 padding:20px;
 background:#020617;
-margin-top:40px;
 }
 
 </style>
@@ -121,116 +61,41 @@ margin-top:40px;
 <body>
 
 <header>
-<h1>🚀 My Tech Website</h1>
-<p>เว็บไซต์ความรู้ด้านเทคโนโลยี</p>
+<h1>🚀 Tech Knowledge</h1>
+<p>เว็บไซต์ความรู้เทคโนโลยี</p>
 </header>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">AI</a>
-<a href="#">Programming</a>
-<a href="#">Cyber Security</a>
-<a href="#">Projects</a>
-</nav>
-
-<section class="hero">
-<h1>Welcome to Tech World</h1>
-<p>เรียนรู้เทคโนโลยีใหม่ ๆ และโปรเจกต์น่าสนใจ</p>
-</section>
-
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="🔎 ค้นหาหัวข้อ..." onkeyup="searchContent()">
-</div>
 
 <div class="container">
 
-<h2>บทความเทคโนโลยี</h2>
+<h2>บทความ</h2>
 
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995">
-<div class="card-content">
-<h3>Artificial Intelligence</h3>
-<p>AI กำลังเปลี่ยนโลกของเทคโนโลยี</p>
-<a href="#" class="btn">อ่านเพิ่มเติม</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4">
-<div class="card-content">
-<h3>Web Development</h3>
-<p>เรียนรู้ HTML CSS และ JavaScript</p>
-<a href="#" class="btn">อ่านเพิ่มเติม</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769">
-<div class="card-content">
-<h3>Cyber Security</h3>
-<p>การป้องกันข้อมูลในโลกดิจิทัล</p>
-<a href="#" class="btn">อ่านเพิ่มเติม</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
-<div class="card-content">
-<h3>Future Technology</h3>
-<p>อนาคตของ AI และหุ่นยนต์</p>
-<a href="#" class="btn">อ่านเพิ่มเติม</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-<div class="card-content">
-<h3>Internet of Things</h3>
-<p>อุปกรณ์ต่าง ๆ เชื่อมต่ออินเทอร์เน็ตและทำงานร่วมกัน</p>
-<a href="#" class="btn">อ่านเพิ่มเติม</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-<div class="card-content">
-<h3>Tech Projects</h3>
-<p>โปรเจกต์เทคโนโลยีและการทดลองใหม่ ๆ</p>
-<a href="#" class="btn">ดูโปรเจกต์</a>
-</div>
-</div>
-
-</div>
+<div class="grid" id="posts"></div>
 
 </div>
 
 <footer>
-<p>© 2026 My Tech Website</p>
+<p>© 2026 Tech Website</p>
 </footer>
 
 <script>
 
-function searchContent(){
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
-let input = document.getElementById("searchInput").value.toLowerCase();
+let container = document.getElementById("posts");
 
-let cards = document.querySelectorAll(".card");
+posts.forEach(post => {
 
-cards.forEach(card => {
-
-let text = card.innerText.toLowerCase();
-
-if(text.includes(input)){
-card.style.display = "block";
-}else{
-card.style.display = "none";
-}
+container.innerHTML += `
+<div class="card">
+<img src="${post.image}">
+<div class="card-content">
+<h3>${post.title}</h3>
+<p>${post.text}</p>
+</div>
+</div>
+`;
 
 });
-
-}
 
 </script>
 
